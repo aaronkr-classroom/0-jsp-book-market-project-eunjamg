@@ -6,6 +6,11 @@ import dto.Book;
 public class BookRepository {
 	
 	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
+	private static BookRepository instance = new BookRepository();
+
+	public static BookRepository getInstance() {
+		return instance;
+	}
 	
 	public BookRepository() {
 		Book book1 = new Book("ISBN1234", "C# 프로그래밍", 27000);
@@ -15,6 +20,7 @@ public class BookRepository {
 		book1.setCategory(null);
 		book1.setUnitsInStock(0);
 		book1.setReleaseDate(null);
+		book1.setFilename("ISBN1234.jpg");
 		
 		Book book2 = new Book("ISBN1235", "자바마스터", 30000);
 		book2.setAuthor(null);
@@ -23,6 +29,7 @@ public class BookRepository {
 		book2.setCategory(null);
 		book2.setUnitsInStock(0);
 		book2.setReleaseDate(null);
+		book2.setFilename("ISBN1235.jpg");
 		
 		Book book3 = new Book("ISBN1236", "파이썬 프로그래밍", 30000);
 		book3.setAuthor(null);
@@ -31,6 +38,7 @@ public class BookRepository {
 		book3.setCategory(null);
 		book3.setUnitsInStock(0);
 		book3.setReleaseDate(null);
+		book3.setFilename("ISBN1236.jpg");
 		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
@@ -41,6 +49,8 @@ public class BookRepository {
 	public ArrayList<Book> getAllBooks() {
 		return listOfBooks;
 	}
+	
+	// p. 189
 	public Book getBookById(String bookId) {
 		Book bookById = null;
 		
@@ -55,6 +65,11 @@ public class BookRepository {
 		}
 		
 		return bookById;
+	}
+
+	// p. 225
+	public void addBook(Book book) {
+		listOfBooks.add(book);
 	}
 
 }
